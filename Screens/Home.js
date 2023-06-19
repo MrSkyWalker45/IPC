@@ -13,12 +13,9 @@ const Home  = () => {
        
         <View style={tw `flex-row pb-3 items-center mx-1 mr-2 pl-2`}>
         <Image source={require('../assets/IPC.jpg')}
-          style={tw`h-20 w-20 bg-white p-4 rounded-full`}/>
+          style={tw`h-20 w-20 bg-white p-4 rounded-full pt-10`}/>
 
         <View style={{ flex: 1 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 25, paddingLeft: 5, textAlign: 'center', paddingRight: 100,borderBottomWidth:0.3,borderBottomColor:"#BEBEBE"}}>
-            Choose a committee
-          </Text>
         </View>
       </View>
       <View style={{paddingLeft: 10,flex:1,justifyContent:'center'}}>

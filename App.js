@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import Login from './Screens/Login';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import tw from 'twrnc'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Home from './Screens/Home';
+import Committee from './components/Committee';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -25,8 +25,14 @@ export default function App() {
           name="home"
           component={Home}
           options={{
-            headerShown:false
+            headerShown:true
           }}/>
+          <Stack.Screen 
+            name = "CSc" 
+            component={Committee}
+            options={{
+              headerShown:true,
+            }}/> 
       </Stack.Navigator>
 
     </NavigationContainer>
