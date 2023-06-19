@@ -12,10 +12,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [Committee,setCommittee] = useState('');
+
   const navigation = useNavigation();
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         navigation.replace("home");
       }
@@ -53,7 +54,8 @@ export default function Login() {
               <MaterialIcons name="mail" size={25} color="black" style={tw`pt-2 pr-2`} />
 
               <TextInput 
-              style={tw.style('p-3 pt-1',{borderBottomWidth: 0.3, width: 300,borderBottomColor:"gray",fontSize:20})}
+              style={tw.style('p-3 pt-1',{borderBottomWidth: 0.3, width: 300,borderBottomColor:"gray",fontSize:20,outline:'none'})}
+    
                placeholder="Email"
                autoCapitalize="none"
                autoCorrect={false}
@@ -63,7 +65,7 @@ export default function Login() {
 
             <View style={tw`flex-row`}>
               <Ionicons name="ios-lock-closed" size={25} color="black" style={tw`pt-2 pr-2`} />
-              <TextInput style={tw.style('p-3  pt-1',{ borderBottomWidth: 0.3, width: 300,borderBottomColor:"gray",fontSize:20})} 
+              <TextInput style={tw.style('p-3  pt-1',{ borderBottomWidth: 0.3, width: 300,borderBottomColor:"gray",fontSize:20,outline:'none'})} 
               placeholder="Password"
               autoCapitalize="none"
               autoCorrect={false}
@@ -71,6 +73,15 @@ export default function Login() {
               type="pasword" value={password} onChangeText={(text) => setPassword(text)}
 
               />
+            </View>
+            <View style={tw`flex-row`}>
+              <Ionicons name="user" size={25} color="black" style={tw`pt-2 pr-2`}/>
+              <TextInput style={tw.style('p-3 pt-2',{borderBottomWidth:0.3,width:300,borderBottomColor:'gray',fontSize:20,outline:'none'})}
+                placeholder='Committee'
+                autoCapitalize='none'
+                autoCorrect="none"
+                type="text" value={Committee} onChangeText={(text) => setCommittee(text)}/> 
+
             </View>
             <Animatable.View animation="fadeInUp" iterationCount={1} delay={650}>
             <TouchableOpacity style={tw.style('p-3 my-10 items-center bg-black rounded',{width:250,backgroundColor:"black"})} onPress={signIn}> 
@@ -81,36 +92,8 @@ export default function Login() {
             </Animatable.View>
 
           </View>
-          <View style={tw`items-center`}>
-            <Text style={tw`text-center text-black font-bold`}>Or Sign Up With</Text>
+
          
-           </View>
-
-          <View style={tw`flex-row items-center justify-center pt-8`}>
-                <TouchableOpacity  onPress={()=> alert("Hahah doesn't work")}>
-                    <Icon style={tw`p-2 bg-white rounded-full w-20  mr-5`} name="apple1" color="black" type="antdesign" />
-                </TouchableOpacity>
-
-                <TouchableOpacity  onPress={()=>alert("Doesnt work either")}>
-
-                    <Icon style={tw`p-2 bg-white rounded-full w-20 mr-5`} name="google" color="black" type="antdesign" />
-
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={()=>alert("you think this one would work")}>
-                    <Icon style={tw`p-2 bg-white rounded-full w-20`} name="facebook-square" color="black" type="antdesign" />
-                </TouchableOpacity>
-            </View>
-            <View style={tw`flex-row items-center justify-center pt-10`}> 
-              <Text style={tw`font-bold text-xs text-gray-400 text-center pb-3`}>
-                New User?
-              </Text>
-              <TouchableOpacity style={tw`px-2`} onPress={() => navigation.navigate('Register')}>
-                <Text style={tw.style('font-extrabold text-center text-black pb-3')}> 
-                  Register
-                </Text>
-              </TouchableOpacity>
-              </View>
         </Card>
       </Animatable.View>
     </SafeAreaView>
@@ -121,7 +104,7 @@ export default function Login() {
 const styles = StyleSheet.create({
   Login: {
     height: 480,
-    width: 370,
+    width: 520,
     borderRadius: 30,
     shadowOffset: { width: 0, height: 40 },
     elevation: 40,

@@ -25,7 +25,11 @@ export default function App() {
           name="home"
           component={Home}
           options={{
-            headerShown:true
+            headerShown:true,
+            headerTitle:'Choose A Committee',
+            headerTitleStyle:{fontSize:30,fontWeight:'bold',textAlign:'center',paddingBottom:10},
+            headerTitleAlign:'center', 
+          
           }}/>
           <Stack.Screen 
             name = "CSc" 
