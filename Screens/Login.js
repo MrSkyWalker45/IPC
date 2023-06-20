@@ -1,19 +1,17 @@
-import { View, TextInput, SafeAreaView, TouchableOpacity, ImageBackground, Dimensions, StyleSheet,Text } from 'react-native'
+import { View, TextInput, SafeAreaView, TouchableOpacity,Dimensions, StyleSheet,Text ,Image} from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Card, Icon } from 'react-native-elements'
 import tw from 'twrnc'
 import { auth } from '../firebase';
 import * as Animatable from 'react-native-animatable';
 import { useNavigation } from '@react-navigation/native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { ImageBackground } from 'react-native-web';
 
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [Committee,setCommittee] = useState('');
-
   const navigation = useNavigation();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -29,34 +27,30 @@ export default function Login() {
       const user = userCredentials.user;
     }).catch(error => alert(error.message));
   }
+  console.log("hello")
 
   return (
-    <SafeAreaView style={tw.style('flex-1 items-center justify-center',{backgroundColor:'#87CEFA'})}>
+    <SafeAreaView style={tw.style('flex-1 items-center justify-center')}>
+      <ImageBackground source={require('../assets/bg-red.jpg')} resizeMode="cover" style={{flex: 1,width:Dimensions.get('window').width,height:Dimensions.get('window').height}}/>
+      <Animatable.Image animation="slideInUp" iterationCount={1} style={tw`w-150 h-100`} source={require('../assets/IPC_TXT.png')}/>   
       <Animatable.View style={tw`items-center justify-center flex-1`}>
-        <Animatable.Image 
-        style={tw.style('items-center justify-center h-60 w-60',{top:10})} 
-        source={require('../assets/IPC.jpg')} 
-        iterationCount={1} animation="slideInUp"/>
         <Animatable.Text
           animation="slideInUp"
           iterationCount={1}
-          style={tw.style('text-xl text-black font-bold text-center pt-10 ', { fontSize: 40 })}>
+          style={tw.style('text-xl text-white font-bold text-center pt-10 ', { fontSize: 40})}>
           Login
         </Animatable.Text>
-
       </Animatable.View>
       <Animatable.View animation="slideInUp" iterationCount={1} delay={500} style={tw`items-center pt-20`}>
-        <Card
-          containerStyle={styles.Login}>
-    
+        <Card containerStyle={styles.Login}>
           <View style={tw`items-center`}>
             <View style={tw`flex-row p-10`}>
-              <MaterialIcons name="mail" size={25} color="black" style={tw`pt-2 pr-2`} />
+          
+              <Icon name="user" type="antdesign" size={25} color="black" style={tw`pt-2 pr-2`}/>
 
               <TextInput 
               style={tw.style('p-3 pt-1',{borderBottomWidth: 0.3, width: 300,borderBottomColor:"gray",fontSize:20,outline:'none'})}
-    
-               placeholder="Email"
+               placeholder="Username"
                autoCapitalize="none"
                autoCorrect={false}
                type="email" value={email} onChangeText={(text) => setEmail(text)}
@@ -71,18 +65,9 @@ export default function Login() {
               autoCorrect={false}
               secureTextEntry={true}
               type="pasword" value={password} onChangeText={(text) => setPassword(text)}
-
               />
             </View>
-            <View style={tw`flex-row`}>
-              <Ionicons name="user" size={25} color="black" style={tw`pt-2 pr-2`}/>
-              <TextInput style={tw.style('p-3 pt-2',{borderBottomWidth:0.3,width:300,borderBottomColor:'gray',fontSize:20,outline:'none'})}
-                placeholder='Committee'
-                autoCapitalize='none'
-                autoCorrect="none"
-                type="text" value={Committee} onChangeText={(text) => setCommittee(text)}/> 
-
-            </View>
+          
             <Animatable.View animation="fadeInUp" iterationCount={1} delay={650}>
             <TouchableOpacity style={tw.style('p-3 my-10 items-center bg-black rounded',{width:250,backgroundColor:"black"})} onPress={signIn}> 
               <Text style={tw.style('font-bold text-xl text-white')}>
@@ -92,8 +77,6 @@ export default function Login() {
             </Animatable.View>
 
           </View>
-
-         
         </Card>
       </Animatable.View>
     </SafeAreaView>
@@ -113,6 +96,8 @@ const styles = StyleSheet.create({
     justifyContent:'center', 
     alignItems:'center',
     borderColor:"#BDBDBD",
-    borderWidth:0.8
+    borderWidth:0.8,
+    paddingBottom:10
+    
   }
 })
