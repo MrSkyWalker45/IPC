@@ -1,4 +1,4 @@
-import { View, TextInput, SafeAreaView, TouchableOpacity,Dimensions, StyleSheet,Text ,Image} from 'react-native'
+import { View, TextInput, SafeAreaView, TouchableOpacity,Dimensions, StyleSheet,Text} from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Card, Icon } from 'react-native-elements'
 import tw from 'twrnc'
@@ -27,13 +27,13 @@ export default function Login() {
       const user = userCredentials.user;
     }).catch(error => alert(error.message));
   }
-  console.log("hello")
 
   return (
-    <SafeAreaView style={tw.style('flex-1 items-center justify-center')}>
-      <ImageBackground source={require('../assets/bg-red.jpg')} resizeMode="cover" style={{flex: 1,width:Dimensions.get('window').width,height:Dimensions.get('window').height}}/>
-      <Animatable.Image animation="slideInUp" iterationCount={1} style={tw`w-150 h-100`} source={require('../assets/IPC_TXT.png')}/>   
-      <Animatable.View style={tw`items-center justify-center flex-1`}>
+    <View style={tw`flex-1`}>
+    <SafeAreaView style={tw.style('items-center justify-center')}>
+      <ImageBackground source={require('../assets/bg-red.jpg')} resizeMode= "cover" style={{width:Dimensions.get('window').width,height:Dimensions.get('window').height}}/>
+      <Animatable.Image animation="slideInUp" iterationCount={1} style={tw`w-150 h-100`} source={require('../assets/IPC_TXT.PNG')}/>   
+      <Animatable.View style={tw`items-center justify-center`}>
         <Animatable.Text
           animation="slideInUp"
           iterationCount={1}
@@ -80,6 +80,8 @@ export default function Login() {
         </Card>
       </Animatable.View>
     </SafeAreaView>
+
+    </View>
   )
 }
 
@@ -96,8 +98,8 @@ const styles = StyleSheet.create({
     justifyContent:'center', 
     alignItems:'center',
     borderColor:"#BDBDBD",
-    borderWidth:0.8,
-    paddingBottom:10
+    borderWidth:0.5,
+    paddingBottom:10,
     
   }
 })

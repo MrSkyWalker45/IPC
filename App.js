@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './Screens/Login';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -13,14 +12,6 @@ export default function App() {
  <SafeAreaProvider> 
     <NavigationContainer> 
       <Stack.Navigator>
-        <Stack.Screen
-          name = "Login"
-          component={Login}
-          options={{
-            headerShown:false
-            }
-          }
-        />
         <Stack.Screen 
           name="home"
           component={Home}
@@ -34,17 +25,11 @@ export default function App() {
           <Stack.Screen 
             name = "CSc" 
             component={Committee}
-            options={{
-              headerShown:false,
-              headerTitleStyle:{
-                fontSize:30, 
-                fontWeight:'bold',
-                textAlign:'center', 
-                paddingBottom:10
-              }, 
-              headerTitleAlign:'center',
-              headerTitle:"Committee"
-            }}/> 
+            options={
+                ({ route }) => ({ title: route.params.choice,headerTitleAlign:'center',headerTitleStyle:{fontSize:30,fontWeight:'bold',paddingBottom:10}})
+            }
+
+            /> 
       </Stack.Navigator>
 
     </NavigationContainer>

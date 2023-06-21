@@ -7,7 +7,7 @@ import { auth } from '../firebase';
 import {Icon} from 'react-native-elements';
 const NavOptions = () => {  
   const navigation = useNavigation();
-  let choice = 0;
+  let choice = "";
   let chosen = false;
   console.log(choice);
 
@@ -17,13 +17,13 @@ const NavOptions = () => {
 
   return (
 <>
-    <SafeAreaView style={tw.style('flex-1 items-center justify-center')}>
-    <ImageBackground source={require('../assets/bg-red.jpg')} resizeMode="cover" style={{flex: 1,width:Dimensions.get('screen').width,height:Dimensions.get('screen').height}}/>
+    <SafeAreaView style={tw.style('items-center justify-center')}>
+    <ImageBackground source={require('../assets/bg-red.jpg')} resizeMode="cover" style={{flex: 1,width:Dimensions.get('window').width,height:Dimensions.get('window').height,position:'absolute'}}/>
 
-    <ScrollView  style={tw`pt-10 z-50`} horizontal contentContainerStyle={{justifyContent:'center',alignItems:'center'}}> 
-        <View style={{ bottom: 24 }}> 
+    <ScrollView  style={tw`pt-10 z-50 flex-1`} horizontal contentContainerStyle={{justifyContent:'center',alignItems:'center'}}> 
+        <View style={{ bottom: 24,flex:1 }}> 
   
-          <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:0})}>
+          <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"UNSC"})}>
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-xl text-black text-center',{fontSize:33})}>UNSC</Card.Title>
               <Card.FeaturedSubtitle style={tw.style('text-black  text-xs pr-20 text-center px-2',{fontSize:18})}>United Nations Security Council </Card.FeaturedSubtitle>
@@ -31,7 +31,7 @@ const NavOptions = () => {
             </Card>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:1})} style={tw.style('pt-4',{opacity:chosen   ? 0.7 :1})} disabled={chosen}>
+          <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"Lok Sabha"})} style={tw.style('pt-4')}>
 
             <Card containerStyle={styles.Card}>
 
@@ -40,14 +40,14 @@ const NavOptions = () => {
               <Image source={require('../assets/LS.jpg')} style={tw.style('h-40 w-64 rounded mx-5')} />
             </Card>
           </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:2})} style={tw.style('pt-4',{opacity:chosen   ? 0.7 :1})} disabled={chosen}>
+            <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"UNHRC"})} style={tw.style('pt-4',{opacity:chosen   ? 0.7 :1})} disabled={chosen}>
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-lg text-black text-center',{fontSize:33})}>UNHRC</Card.Title>
               <Card.FeaturedSubtitle style={tw.style('text-black text-xs pr-20 text-center px-2',{fontSize:18})}>United Nations Human Rights Council </Card.FeaturedSubtitle>
               <Image source={require('../assets/UNHRC.jpg')} style={tw.style('h-40 w-64 rounded mx-5')} />
             </Card>
           </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:3})} style={tw.style('pt-4',{opacity:chosen   ? 0.7 :1})} disabled={chosen}>
+            <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"DISEC"})} style={tw.style('pt-4')}>
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-lg text-black text-center',{fontSize:33})}>DISEC</Card.Title>
               <Card.FeaturedSubtitle style={tw.style('text-black text-xs pr-20 text-center px-2',{fontSize:18})}>Disarmament and International Security </Card.FeaturedSubtitle>
