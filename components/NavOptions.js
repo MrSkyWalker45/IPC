@@ -3,7 +3,6 @@ import React,{useEffect} from 'react';
 import tw from 'twrnc';
 import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-elements';
-import { auth } from '../firebase';
 import {Icon} from 'react-native-elements';
 const NavOptions = () => {  
   const navigation = useNavigation();
@@ -11,15 +10,10 @@ const NavOptions = () => {
   let chosen = false;
   console.log(choice);
 
-  const signOut = () =>{ 
-    auth.signOut().then(() => navigation.replace('Login'))
-  }; 
 
   return (
 <>
     <SafeAreaView style={tw.style('items-center justify-center')}>
-    <ImageBackground source={require('../assets/bg-red.jpg')} resizeMode="cover" style={{flex: 1,width:Dimensions.get('window').width,height:Dimensions.get('window').height,position:'absolute'}}/>
-
     <ScrollView  style={tw`pt-10 z-50 flex-1`} horizontal contentContainerStyle={{justifyContent:'center',alignItems:'center'}}> 
         <View style={{ bottom: 24,flex:1 }}> 
   
@@ -40,7 +34,7 @@ const NavOptions = () => {
               <Image source={require('../assets/LS.jpg')} style={tw.style('h-40 w-64 rounded mx-5')} />
             </Card>
           </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"UNHRC"})} style={tw.style('pt-4',{opacity:chosen   ? 0.7 :1})} disabled={chosen}>
+            <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"UNHRC"})} style={tw.style('pt-4')} disabled={chosen}>
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-lg text-black text-center',{fontSize:33})}>UNHRC</Card.Title>
               <Card.FeaturedSubtitle style={tw.style('text-black text-xs pr-20 text-center px-2',{fontSize:18})}>United Nations Human Rights Council </Card.FeaturedSubtitle>
