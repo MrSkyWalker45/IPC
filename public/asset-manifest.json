@@ -1,0 +1,42 @@
+{
+  "files": {
+    "app.js": "/MrSkywalker123/IPC/static/js/app.01b8200f.chunk.js",
+    "app.js.map": "/MrSkywalker123/IPC/static/js/app.01b8200f.chunk.js.map",
+    "runtime~app.js": "/MrSkywalker123/IPC/static/js/runtime~app.8f8b6b74.js",
+    "runtime~app.js.map": "/MrSkywalker123/IPC/static/js/runtime~app.8f8b6b74.js.map",
+    "static/js/2.e7760d51.chunk.js": "/MrSkywalker123/IPC/static/js/2.e7760d51.chunk.js",
+    "static/js/2.e7760d51.chunk.js.map": "/MrSkywalker123/IPC/static/js/2.e7760d51.chunk.js.map",
+    "fonts/AntDesign.ttf": "/MrSkywalker123/IPC/./fonts/AntDesign.ttf",
+    "fonts/Entypo.ttf": "/MrSkywalker123/IPC/./fonts/Entypo.ttf",
+    "fonts/Feather.ttf": "/MrSkywalker123/IPC/./fonts/Feather.ttf",
+    "fonts/FontAwesome.ttf": "/MrSkywalker123/IPC/./fonts/FontAwesome.ttf",
+    "fonts/FontAwesome5_Brands.ttf": "/MrSkywalker123/IPC/./fonts/FontAwesome5_Brands.ttf",
+    "fonts/FontAwesome5_Solid.ttf": "/MrSkywalker123/IPC/./fonts/FontAwesome5_Solid.ttf",
+    "fonts/Fontisto.ttf": "/MrSkywalker123/IPC/./fonts/Fontisto.ttf",
+    "fonts/Foundation.ttf": "/MrSkywalker123/IPC/./fonts/Foundation.ttf",
+    "fonts/Ionicons.ttf": "/MrSkywalker123/IPC/./fonts/Ionicons.ttf",
+    "fonts/MaterialCommunityIcons.ttf": "/MrSkywalker123/IPC/./fonts/MaterialCommunityIcons.ttf",
+    "fonts/MaterialIcons.ttf": "/MrSkywalker123/IPC/./fonts/MaterialIcons.ttf",
+    "fonts/SimpleLineIcons.ttf": "/MrSkywalker123/IPC/./fonts/SimpleLineIcons.ttf",
+    "favicon-16.png": "/MrSkywalker123/IPC/favicon-16.png",
+    "favicon-32.png": "/MrSkywalker123/IPC/favicon-32.png",
+    "favicon.ico": "/MrSkywalker123/IPC/favicon.ico",
+    "index.html": "/MrSkywalker123/IPC/index.html",
+    "manifest.json": "/MrSkywalker123/IPC/manifest.json",
+    "serve.json": "/MrSkywalker123/IPC/serve.json",
+    "static/js/2.e7760d51.chunk.js.LICENSE.txt": "/MrSkywalker123/IPC/static/js/2.e7760d51.chunk.js.LICENSE.txt",
+    "static/media/DISEC.jpg": "/MrSkywalker123/IPC/static/media/DISEC.00346ee8.jpg",
+    "static/media/LS.jpg": "/MrSkywalker123/IPC/static/media/LS.3a41d525.jpg",
+    "static/media/UNHRC.jpg": "/MrSkywalker123/IPC/static/media/UNHRC.48f87628.jpg",
+    "static/media/UNSC.jpg": "/MrSkywalker123/IPC/static/media/UNSC.39f21fcb.jpg",
+    "static/media/bell.png": "/MrSkywalker123/IPC/static/media/bell.cf04af27.png",
+    "static/media/heart.png": "/MrSkywalker123/IPC/static/media/heart.23b5c2c0.png",
+    "static/media/rocket.png": "/MrSkywalker123/IPC/static/media/rocket.d2f3bf41.png",
+    "static/media/star.png": "/MrSkywalker123/IPC/static/media/star.69c71386.png"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.8f8b6b74.js",
+    "static/js/2.e7760d51.chunk.js",
+    "static/js/app.01b8200f.chunk.js"
+  ]
+}

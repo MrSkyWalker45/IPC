@@ -2,7 +2,7 @@ import { View, TextInput, SafeAreaView, TouchableOpacity, Dimensions, StyleSheet
 import React, { useState, useEffect } from 'react'
 import { Card, Icon } from 'react-native-elements'
 import tw from 'twrnc'
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged,setPersistence,GoogleAuthProvider, browserSessionPersistence } from 'firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { auth } from '../firebase'
@@ -13,22 +13,30 @@ export default function Login() {
 
   const navigation = useNavigation()
 
-  useEffect(() => {
+ 
+    useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        navigation.replace("home")
+        navigation.replace("home",{email:user.email})
       }
-    })
+    
+   })
 
     return unsubscribe
   }, [])
-  const auth2 = getAuth();
-  onAuthStateChanged(auth2, (user) => {
-    if (user) {
-      const uid = user.uid;
-      console.log(uid)
-    } else {
-    }
+  setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    const provider = new GoogleAuthProvider();
+    // In memory persistence will be applied to the signed in Google user
+    // even though the persistence was set to 'none' and a page redirect
+    // occurred.
+    return signInWithEmailAndPassword(auth, email, password);
+    
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
   });
 
 
@@ -112,3 +120,28 @@ const styles = StyleSheet.create({
 
   }
 })
+/*
+ onAuthStateChanged(auth2, (user) => {
+    let perms = user.email.slice(email.indexOf('@') + 1);
+    
+    console.log(perms)
+    if(perms === "gmail.com"){
+      setAccess(perms)
+      console.log(access)
+    }
+    else if (perms === "unsc.com"){
+      setAccess('unsc') 
+
+    }
+    else if(perms === "ls.com"){
+      setAccess('ls') 
+
+    }
+    else if(perms === "unhrc.com"){
+      setAccess('unhrc')
+    }
+    else if(perms==="disec.com"){
+      setAccess('disec')
+    }
+  });
+*/

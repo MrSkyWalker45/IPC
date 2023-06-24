@@ -7,6 +7,14 @@ import {auth} from '../firebase';
 
 const Home  = () => {
  const navigation = useNavigation();
+
+ const {
+    params: {
+      email
+    }
+  } = useRoute();
+ let perms = email.slice(email.indexOf('@') + 1);
+ console.log(perms)
  const handleSignOut = () => {
   auth
     .signOut()
@@ -17,11 +25,13 @@ const Home  = () => {
 }
 
    return (
+     <>
     <SafeAreaView style={tw.style('flex-1 bg-white')}>
       <View style={{paddingLeft: 10,flex:1}}>
-        <NavOptions/>
+        <NavOptions perms={perms}/>
       </View>
     </SafeAreaView>
+    </>
    
   )
 }
