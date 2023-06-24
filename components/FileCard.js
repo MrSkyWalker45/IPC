@@ -44,8 +44,8 @@ const FileCard = ({ file_name, choice, url, file_type }) => {
         <Card containerStyle={styles.Card}>
           <Card.Title style={tw.style('font-bold  text-black text-center px-2')}>{file_name}</Card.Title>
           <Card.FeaturedSubtitle style={tw.style('text-black text-xs pr-20 text-center px-2')}>{file_type} </Card.FeaturedSubtitle>
-          <Image source={{ uri: Url }} style={tw.style('h-40 w-64 rounded mx-5 pb-20')} />
-          <Icon name="addfile" type="antdesign" size={35} color="black" />
+          <Image source={{ uri: Url }} style={tw.style('h-40 w-64 rounded mx-5')} />
+          <Icon name="addfile" type="antdesign" size={35} color="#FF8F00" style={tw`pt-5`}/>
         </Card>
       </TouchableOpacity>
     </View>

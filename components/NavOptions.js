@@ -35,29 +35,29 @@ const NavOptions = ({perms}) => {
     accessUNHRC = true; 
   }
   return (
-<>
-    <SafeAreaView style={tw.style('items-center justify-center flex-1')}>
     <ScrollView  style={tw`pt-10 z-50 flex-1`} horizontal contentContainerStyle={{justifyContent:'center',alignItems:'center'}}> 
+    <SafeAreaView style={tw.style('items-center justify-center flex-1')}>
         <View style={{ bottom: 24,flex:1 }}> 
-  
-          <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"UNSC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
+          <TouchableOpacity onPress={() => 
+              navigation.navigate('CSc',
+                  {choice:"UNSC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})} 
+                style={tw`pb-5`}
+      >
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-xl text-black text-center',{fontSize:33})}>UNSC</Card.Title>
-              <Card.FeaturedSubtitle style={tw.style('text-black  text-xs pr-20 text-center px-2',{fontSize:18})}>United Nations Security Council </Card.FeaturedSubtitle>
+              <Card.FeaturedSubtitle style={tw.style('text-black  text-xs pr-20 text-center px-2',{fontSize:18})}>United Nations Security Council </Card.FeaturedSubtitle>
               <Image source={require('../assets/UNSC.jpg')} style={tw.style('h-40 w-64 rounded mx-5')} />
             </Card>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"Lok Sabha",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
-
+          <TouchableOpacity style={tw`pt-5`}onPress={() => navigation.navigate('CSc',{choice:"Lok Sabha",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
             <Card containerStyle={styles.Card}>
-
               <Card.Title style={tw.style('font-bold text-lg text-black text-center',{fontSize:33})}>Lok Sabha</Card.Title>
               <Card.FeaturedSubtitle style={tw.style('text-black text-xs pr-20 text-center px-2',{fontSize:18})}>Legislative Assembly Of India </Card.FeaturedSubtitle>
               <Image source={require('../assets/LS.jpg')} style={tw.style('h-40 w-64 rounded mx-5')} />
             </Card>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"UNHRC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
+          <TouchableOpacity style={tw`pt-5`} onPress={() => navigation.navigate('CSc',{choice:"UNHRC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
 
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-lg text-black text-center',{fontSize:33})}>UNHRC</Card.Title>
@@ -65,7 +65,7 @@ const NavOptions = ({perms}) => {
               <Image source={require('../assets/UNHRC.jpg')} style={tw.style('h-40 w-64 rounded mx-5')} />
             </Card>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('CSc',{choice:"DISEC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
+          <TouchableOpacity style={tw`pt-5 `}onPress={() => navigation.navigate('CSc',{choice:"DISEC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-lg text-black text-center px-2',{fontSize:33})}>DISEC</Card.Title>
               <Card.FeaturedSubtitle style={tw.style('text-black text-xs pr-20 text-center px-2',{fontSize:18})}>Disarmament and International Security </Card.FeaturedSubtitle>
@@ -73,9 +73,8 @@ const NavOptions = ({perms}) => {
             </Card>
           </TouchableOpacity>
         </View>
-      </ScrollView>
       </SafeAreaView>
-      </>
+      </ScrollView>
   );
 };
 export default NavOptions;
@@ -89,8 +88,10 @@ const styles = StyleSheet.create({
       elevation: 40,
       borderColor: "#BDBDBD",
       justifyContent:'center',
-      width:Dimensions.get('window').width/2,
+      width:Dimensions.get('window').width/2.5,
       backgroundColor:'#FFFF',
+      paddingBottom:20,
+      paddingTop:10
     }
 
 })
