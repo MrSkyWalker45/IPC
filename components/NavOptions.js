@@ -11,36 +11,13 @@ const NavOptions = ({perms}) => {
 
   let chosen = false;
 
-  let accessAll = false; 
-  let accessUNSC = false; 
-  let accessLS = false; 
-  let accessUNHRC = false; 
-  let accessDISEC = false;
-  if (perms === "gmail.com"){
-    accessAll = true; 
-  }
-  else if(perms === "unsc.com"){
-   accessUNSC = true;  
-  
-  }
-  else if(perms === "ls.com"){
-    accessLS = true; 
- 
-  }
-  else if(perms === "disec.com"){
-    
-    accessDISEC = true; 
-  }
-  else if(perms === "unhrc.com"){
-    accessUNHRC = true; 
-  }
   return (
     <ScrollView  style={tw`pt-10 z-50 flex-1`} horizontal contentContainerStyle={{justifyContent:'center',alignItems:'center'}}> 
     <SafeAreaView style={tw.style('items-center justify-center flex-1')}>
         <View style={{ bottom: 24,flex:1 }}> 
           <TouchableOpacity onPress={() => 
               navigation.navigate('CSc',
-                  {choice:"UNSC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})} 
+                  {choice:"UNSC"})} 
                 style={tw`pb-5`}
       >
             <Card containerStyle={styles.Card}>
@@ -50,14 +27,14 @@ const NavOptions = ({perms}) => {
             </Card>
           </TouchableOpacity>
 
-          <TouchableOpacity style={tw`pt-5`}onPress={() => navigation.navigate('CSc',{choice:"Lok Sabha",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
+          <TouchableOpacity style={tw`pt-5`}onPress={() => navigation.navigate('CSc',{choice:"Lok Sabha"})}>
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-lg text-black text-center',{fontSize:33})}>Lok Sabha</Card.Title>
               <Card.FeaturedSubtitle style={tw.style('text-black text-xs pr-20 text-center px-2',{fontSize:18})}>Legislative Assembly Of India </Card.FeaturedSubtitle>
               <Image source={require('../assets/LS.jpg')} style={tw.style('h-40 w-64 rounded mx-5')} />
             </Card>
           </TouchableOpacity>
-          <TouchableOpacity style={tw`pt-5`} onPress={() => navigation.navigate('CSc',{choice:"UNHRC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
+          <TouchableOpacity style={tw`pt-5`} onPress={() => navigation.navigate('CSc',{choice:"UNHRC"})}>
 
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-lg text-black text-center',{fontSize:33})}>UNHRC</Card.Title>
@@ -65,7 +42,7 @@ const NavOptions = ({perms}) => {
               <Image source={require('../assets/UNHRC.jpg')} style={tw.style('h-40 w-64 rounded mx-5')} />
             </Card>
           </TouchableOpacity>
-          <TouchableOpacity style={tw`pt-5 `}onPress={() => navigation.navigate('CSc',{choice:"DISEC",accessAll:accessAll,accessDISEC:accessDISEC,accessLS:accessLS,accessUNHRC:accessUNHRC,accessUNHRC,accessUNSC:accessUNSC})}>
+          <TouchableOpacity style={tw`pt-5 `}onPress={() => navigation.navigate('CSc',{choice:"DISEC"})}>
             <Card containerStyle={styles.Card}>
               <Card.Title style={tw.style('font-bold text-lg text-black text-center px-2',{fontSize:33})}>DISEC</Card.Title>
               <Card.FeaturedSubtitle style={tw.style('text-black text-xs pr-20 text-center px-2',{fontSize:18})}>Disarmament and International Security </Card.FeaturedSubtitle>
