@@ -58,8 +58,7 @@ const Committee = () => {
     uploadTask.on('state_changed',
       (snapshot) => {
         isSuccess = true;
-        
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         switch (snapshot.state) {
           case 'paused':
             console.log('Upload is paused');
