@@ -33,7 +33,7 @@ const Committee = () => {
       .then((res) => {
         res.prefixes.forEach((folderRef) => {
           console.log(folderRef)
-        });
+        })
         setFiles(res.items)
         res.prefixes.forEach((itemsRef)=>{
           setNames(itemsRef.name); 
@@ -42,7 +42,7 @@ const Committee = () => {
       }).catch((error) => {
         console.log(error)
 
-      });
+      })
   }, [])
  
 
@@ -58,6 +58,7 @@ const Committee = () => {
     uploadTask.on('state_changed',
       (snapshot) => {
         isSuccess = true;
+        
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         switch (snapshot.state) {
           case 'paused':
@@ -84,12 +85,11 @@ const Committee = () => {
   if (files.length === 0){ 
     no_files=  true 
   }
-  const notify = () => toast.success("File Uploaded")
 
   return (
     <SafeAreaView style={tw`flex-1 items-center`}>
         <View style={tw.style('flex-row pt-5', { alignItems: 'center', justifyContent: 'center', paddingBottom: 20, paddingLeft: Dimensions.get('window').width / 1.1 })}>
-          <TouchableOpacity onPress={pickDocument} disabled={!accessAll}>
+          <TouchableOpacity onPress={pickDocument}>
             <Icon size={55} name="pluscircle" style={tw`px-5`} type="antdesign" />
           </TouchableOpacity>
         </View>

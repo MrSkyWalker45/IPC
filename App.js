@@ -6,8 +6,6 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from './Screens/Home';
 import Committee from './components/Committee';
-import Profile from './Screens/Profile';
-import SettingsScreen from './Screens/SettingsScreen';
 
 export default function App() {
   const Stack = createStackNavigator();
