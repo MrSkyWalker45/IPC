@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     borderColor: "#BDBDBD",
     justifyContent: 'center',
     width: Dimensions.get('window').width / 2.4,
-    backgroundColor: '#F4F4E2',
+    backgroundColor: '#00000',
     alignItems:'center',
     justifyContent:'center'
   }

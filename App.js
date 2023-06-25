@@ -27,9 +27,8 @@ export default function App() {
             component={Home}
             options={{
               headerShown: true,
-              headerTintColor:'#F4F4E2',
               headerTitle: 'Choose A Committee',
-              headerTitleStyle: { fontSize: 26, fontWeight: 'bold', textAlign: 'center', paddingBottom: 15,paddingTop:15,color:'black',backgroundColor:'#F4F4E2' },
+              headerTitleStyle: { fontSize: 26, fontWeight: 'bold', textAlign: 'center', paddingBottom: 15,paddingTop:15,color:'black' },
               headerTitleAlign: 'center',
                     headerRight:() => (
                         <SignOut/>
@@ -40,7 +39,7 @@ export default function App() {
             name="CSc"
             component={Committee}
             options={
-              ({ route }) => ({ title: route.params.choice, headerTitleAlign: 'center', headerTitleStyle: { fontSize: 30, fontWeight: 'bold', paddingBottom: 10 } })
+              ({ route }) => ({ title: route.params.choice, headerTitleAlign: 'center', headerTitleStyle: { fontSize: 30, fontWeight: 'bold', paddingBottom: 10,headerTintColor:'#F4F4E2', } })
             }
 
           />

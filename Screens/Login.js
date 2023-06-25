@@ -6,6 +6,8 @@ import { getAuth, onAuthStateChanged,setPersistence,GoogleAuthProvider, browserS
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { auth } from '../firebase'
+import { ToastContainer, toast } from 'react-toastify';
+import * as Animated from 'react-native-animatable';
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -46,25 +48,26 @@ export default function Login() {
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Logged in with:', user.email);
+        toast.success("Logged in",{position:'bottom-right',theme:'dark'}) 
       })
-      .catch(error => alert(error.message))
+      .catch(error => toast.error("Wrong Credentials",{position:'top-right',theme:'dark'}))
   }
 
 
   return (
     <SafeAreaView style={tw.style('items-center justify-center bg-black')}>
-      <View style={tw`items-center justify-center`}>
-      <Image style={tw`h-60 w-100`} source={require('../assets/IPC_TXT.PNG')}/>
+      <ToastContainer/>
+      <Animated.View style={tw`items-center justify-center`} iterationCount={1} animation="slideInUp">
+      <Animated.Image style={tw`h-60 w-100`} source={require('../assets/IPC_TXT.PNG')} iterationCount={1} animation="slideInUp" delay={150}/>
         <Text
           style={tw.style('text-xl text-white font-bold text-center pt-5 ', { fontSize: 40 })}>
           Login
         </Text>
-      </View>
-      <View style={tw`items-center pt-10`}>
+      </Animated.View>
+      <Animated.View style={tw`items-center pt-10`} iterationCount={1} animation="slideInUp" delay={200}>
         <Card containerStyle={styles.Login}>
           <View style={tw`items-center`}>
             <View style={tw`flex-row p-10`}>
-
               <Icon name="user" type="antdesign" size={25} color="black" style={tw`pt-2 pr-2`} />
 
               <TextInput
@@ -74,7 +77,8 @@ export default function Login() {
                 autoCorrect={false}
                 type="email" value={email} onChangeText={(text) => setEmail(text)}
               />
-            </View>
+           
+           </View>
 
             <View style={tw`flex-row`}>
               <Ionicons name="ios-lock-closed" size={25} color="black" style={tw`pt-2 pr-2`} />
@@ -97,7 +101,7 @@ export default function Login() {
 
           </View>
         </Card>
-      </View>
+      </Animated.View>
     </SafeAreaView>
 
   )

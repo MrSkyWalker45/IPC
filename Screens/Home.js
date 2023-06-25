@@ -13,8 +13,20 @@ const Home  = () => {
       email
     }
   } = useRoute();
- let perms = email.slice(email.indexOf('@') + 1);
+ let perms = email.slice(email.indexOf('@')+1);
  console.log(perms)
+ if(perms === "unsc.com"){
+   console.log("only unsc")
+ }
+ else if(perms === "ls.com"){
+   console.log("only ls")
+ }
+ else if(perms === "unhrc.com"){
+   console.log("only unhrc")
+ }
+ else if(perms === "disec.com"){
+   console.log("only disc")
+ }
 
    return (
      <>
