@@ -1,4 +1,4 @@
-import { Settings, StyleSheet, Text, View } from 'react-native';
+import { Settings, StyleSheet, Text, View,Image, Dimensions } from 'react-native';
 import Login from './Screens/Login';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from './Screens/Home';
 import Committee from './components/Committee';
+import SignOut from './Screens/SignOut.js';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -26,10 +27,13 @@ export default function App() {
             component={Home}
             options={{
               headerShown: true,
+              headerTintColor:'#F4F4E2',
               headerTitle: 'Choose A Committee',
-              headerTitleStyle: { fontSize: 30, fontWeight: 'bold', textAlign: 'center', paddingBottom: 10 },
+              headerTitleStyle: { fontSize: 26, fontWeight: 'bold', textAlign: 'center', paddingBottom: 15,paddingTop:15,color:'black',backgroundColor:'#F4F4E2' },
               headerTitleAlign: 'center',
-
+                    headerRight:() => (
+                        <SignOut/>
+                    ),
             }} />
 
           <Stack.Screen

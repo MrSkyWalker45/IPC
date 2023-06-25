@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, ScrollView, Dimensions, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, ScrollView, Dimensions, TouchableOpacity, ImageBackground } from 'react-native'
 import React, { useEffect, useState } from 'react';
 import tw from 'twrnc';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -6,28 +6,21 @@ import * as DocumentPicker from 'expo-document-picker'
 import { Icon, Card } from 'react-native-elements'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL, listAll } from "firebase/storage";
 import FileCard from './FileCard';
+import { ToastContainer, toast } from 'react-toastify';
 const Committee = () => {
-
-  let chosen = false
   let isSuccess = false
   const {
     params: {
       choice,
-      accessAll,
-      accessDISEC,
-      accessLS,
-      accessUNHRC,
-      accessUNSC,
     }
   } = useRoute();
 
   const [files, setFiles] = useState([]);
-  const [names,setNames] = useState('');
+  const [names, setNames] = useState('');
 
-  const navigation = useNavigation();
   const storage = getStorage();
   const listRef = ref(storage, `${choice}/`);
-  
+
   useEffect(() => {
     listAll(listRef)
       .then((res) => {
@@ -35,8 +28,8 @@ const Committee = () => {
           console.log(folderRef)
         })
         setFiles(res.items)
-        res.prefixes.forEach((itemsRef)=>{
-          setNames(itemsRef.name); 
+        res.prefixes.forEach((itemsRef) => {
+          setNames(itemsRef.name);
         })
 
       }).catch((error) => {
@@ -44,7 +37,7 @@ const Committee = () => {
 
       })
   }, [])
- 
+
 
 
   const pickDocument = async () => {
@@ -65,7 +58,6 @@ const Committee = () => {
             break;
           case 'running':
             console.log('Upload is running');
-
             break;
 
         }
@@ -80,41 +72,43 @@ const Committee = () => {
       }
     );
   }
-  let no_files = false; 
-  if (files.length === 0){ 
-    no_files=  true 
+  let no_files = false;
+  if (files.length === 0) {
+    no_files = true
   }
 
   return (
-    <SafeAreaView style={tw`flex-1 items-center`}>
+    <ImageBackground style={{ width: '100%', height: '100%', flex: 1 }} resizeMode="cover" source={require('../assets/newspaper.jpg')} >
+      <ToastContainer/>
+      <SafeAreaView style={tw`flex-1 items-center`}>
         <View style={tw.style('flex-row pt-5', { alignItems: 'center', justifyContent: 'center', paddingBottom: 20, paddingLeft: Dimensions.get('window').width / 1.1 })}>
           <TouchableOpacity onPress={pickDocument}>
-            <Icon size={55} name="pluscircle" style={tw`px-5`} type="antdesign" />
+            <Icon size={55} name="pluscircle" style={tw.style('px-5', { position: 'relative' })} type="antdesign" />
           </TouchableOpacity>
         </View>
-      <View style={{ flex: 1, bottom: 15 }}>
-        <ScrollView showsHorizontalScrollIndicator={false} style={tw`pt-5 z-50 `} contentContainerStyle={{ justifyContent: 'center', alignItems: 'center',flex:1 }}>
-          <View style={{ bottom: 24 }}>
-            {no_files && 
-            <View style={tw`items-center justify-center`}>
-              <Text style={tw`font-bold text-xl text-center`}>
-                No files found 
-              </Text>
-              <View style={tw`items-center justify-center pt-50 px-10`}>
-                <Text style={tw`font-bold text-xl text-center`}>
-                  Click the + to upload your reports
-                </Text>
+        <View style={{ flex: 1, bottom: 15 }}>
+          <ScrollView showsHorizontalScrollIndicator={false} style={tw`pt-5 z-50 `} contentContainerStyle={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+            <View style={{ bottom: 24 }}>
+              {no_files &&
+                <View style={tw`items-center justify-center`}>
+                  <Text style={tw`font-bold text-xl text-center`}>
+                    No files found
+                  </Text>
+                  <View style={tw`items-center justify-center pt-50 px-10`}>
+                    <Text style={tw`font-bold text-xl text-center`}>
+                      Click the + to upload your reports
+                    </Text>
+                  </View>
                 </View>
-              </View>    
               }
-            {files?.map(file => (
-              <FileCard key={file} choice={choice} file_name={file.name}  file_type={file.type}/>
-            ))}
-          </View>
-        </ScrollView>
-      </View>
-    </SafeAreaView>
-
+              {files?.map(file => (
+                <FileCard key={file} choice={choice} file_name={file.name} file_type={file.type} />
+              ))}
+            </View>
+          </ScrollView>
+        </View>
+      </SafeAreaView>
+    </ImageBackground>
   )
 }
 
@@ -130,5 +124,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: Dimensions.get('window').width / 2,
     backgroundColor: '#FFFF',
+    height: 200
   }
 })

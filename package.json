@@ -10,8 +10,6 @@
     "build": "webpack --config webpack.config.js",
     "predeploy": "expo export:web",
     "deploy-hosting": "npm run predeploy && firebase deploy --only hosting"
-
-
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
@@ -38,6 +36,7 @@
     "react-native-screens": "~3.20.0",
     "react-native-web": "^0.18.12",
     "react-pdf": "^7.1.2",
+    "react-toastify": "^9.0.3",
     "twrnc": "^3.6.1"
   },
   "devDependencies": {

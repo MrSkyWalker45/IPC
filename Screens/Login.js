@@ -1,4 +1,4 @@
-import { View, TextInput, SafeAreaView, TouchableOpacity, Dimensions, StyleSheet, Text } from 'react-native'
+import { View, TextInput, SafeAreaView, TouchableOpacity, Dimensions, StyleSheet, Text,Image } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Card, Icon } from 'react-native-elements'
 import tw from 'twrnc'
@@ -52,14 +52,15 @@ export default function Login() {
 
 
   return (
-    <SafeAreaView style={tw.style('items-center justify-center')}>
+    <SafeAreaView style={tw.style('items-center justify-center bg-black')}>
       <View style={tw`items-center justify-center`}>
+      <Image style={tw`h-60 w-100`} source={require('../assets/IPC_TXT.PNG')}/>
         <Text
-          style={tw.style('text-xl text-white font-bold text-center pt-10 ', { fontSize: 40 })}>
+          style={tw.style('text-xl text-white font-bold text-center pt-5 ', { fontSize: 40 })}>
           Login
         </Text>
       </View>
-      <View style={tw`items-center pt-20`}>
+      <View style={tw`items-center pt-10`}>
         <Card containerStyle={styles.Login}>
           <View style={tw`items-center`}>
             <View style={tw`flex-row p-10`}>
@@ -86,8 +87,8 @@ export default function Login() {
               />
             </View>
 
-            <View>
-              <TouchableOpacity style={tw.style('p-3 my-10 items-center bg-black rounded', { width: 250, backgroundColor: "black" })} onPress={handleLogin}>
+            <View style={tw`pt-2`}>
+              <TouchableOpacity style={tw.style('p-3 my-10 items-center bg-black rounded ', { width: 250, backgroundColor: "black" })} onPress={handleLogin}>
                 <Text style={tw.style('font-bold text-xl text-white')}>
                   Login
                 </Text>
@@ -105,7 +106,7 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   Login: {
-    height: 480,
+    height: 440,
     width: 520,
     borderRadius: 30,
     shadowOffset: { width: 0, height: 40 },
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: "#BDBDBD",
     borderWidth: 0.5,
-    paddingBottom: 10,
+    paddingBottom:10,
 
   }
 })
